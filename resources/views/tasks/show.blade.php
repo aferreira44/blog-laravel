@@ -6,10 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <ul>
-            @foreach ($tasks as $task)
-                <li><a href="/tasks/{{ $task->id }}">{{ $task->body }}</a></li>
-            @endforeach
-        </ul>
+        <h1>{{ $task->body }}</h1>
     </body>
 </html>

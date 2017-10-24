@@ -12,11 +12,6 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('posts')->insert([
-            'title' => str_random(15),
-            'body' => str_random(140),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
+      factory(App\Post::class, 10)->create();
     }
 }

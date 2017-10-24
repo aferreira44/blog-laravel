@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use App\Post;
 use App\Http\Requests\StorePost;
@@ -28,6 +29,9 @@ class PostsController extends Controller
     {
         // Create a new post using the request data and save it to the database
         Post::create(request(['title', 'body']));
+
+        // Logging
+        Log::info("Post Created: " . request('title'));
 
         // And then redirect to the home page
         return redirect('/');

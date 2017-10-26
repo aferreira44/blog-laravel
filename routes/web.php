@@ -1,5 +1,10 @@
 <?php
 
+// Auth
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
 // Tasks
 
 Route::get('/tasks', 'TasksController@index');

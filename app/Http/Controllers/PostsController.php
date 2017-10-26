@@ -10,6 +10,10 @@ use App\Http\Requests\StorePost;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
     public function index()
     {
         $posts = Post::latest()->get();
@@ -30,7 +34,9 @@ class PostsController extends Controller
     public function store(StorePost $request)
     {
         // Create a new post using the request data and save it to the database
-        Post::create(request(['title', 'body']));
+        auth()->user()->publish(
+            new POst(request(['title', 'body']))
+        );
 
         // Logging
         Log::info("Post Created: " . request('title'));

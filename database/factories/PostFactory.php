@@ -5,7 +5,9 @@ use Carbon\Carbon;
 
 $factory->define(App\Post::class, function (Faker $faker) {
     return [
-        'user_id' => $faker->numberBetween(1, 10),
+        'user_id' => function () {
+            return factory(App\User::class)->create()->id;
+        },
         'title' => $faker->text(15),
         'body' => $faker->text(1000),
         'created_at' => $faker->date,
